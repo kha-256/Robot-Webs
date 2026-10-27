@@ -1,0 +1,52 @@
+.contact {
+  border-top: 1px solid var(--color-border);
+  background: linear-gradient(180deg, transparent, rgba(17, 20, 28, 0.5));
+}
+
+.contact__header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.contact__grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .contact__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.contact__card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  transition:
+    border-color var(--duration-normal),
+    color var(--duration-normal);
+}
+
+a.contact__card:hover {
+  border-color: var(--color-border-accent);
+  color: var(--color-text);
+}
+
+.contact__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}

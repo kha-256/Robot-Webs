@@ -1,0 +1,8 @@
+.section-header--left {
+  text-align: left;
+  margin-inline: 0;
+}
+
+.section-header--left .section-subtitle {
+  margin-inline: 0;
+}

@@ -1,0 +1,126 @@
+.dashboard {
+  border-top: 1px solid var(--color-border);
+}
+
+.dashboard__grid {
+  display: grid;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-3xl);
+}
+
+@media (min-width: 640px) {
+  .dashboard__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .dashboard__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dash-card {
+  height: 100%;
+  padding: var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: linear-gradient(145deg, var(--color-bg-elevated), rgba(10, 12, 16, 0.8));
+  transition: border-color var(--duration-normal);
+}
+
+.dash-card:hover {
+  border-color: var(--color-border-accent);
+}
+
+.dash-card__icon {
+  margin-bottom: var(--space-md);
+}
+
+.dash-card__title {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+.dash-card__text {
+  font-size: var(--text-sm);
+}
+
+.dashboard__highlights {
+  padding-top: var(--space-2xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.dashboard__carousel {
+  max-width: 56rem;
+  margin-inline: auto;
+}
+
+.dashboard__carousel-viewport {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.dashboard__slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: var(--space-md);
+}
+
+.dashboard__carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.dashboard__carousel-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  transition:
+    border-color var(--duration-fast),
+    background var(--duration-fast);
+}
+
+.dashboard__carousel-btn:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.dashboard__dots {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.dashboard__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--color-text-dim);
+  transition:
+    width var(--duration-normal),
+    background var(--duration-normal);
+}
+
+.dashboard__dot--active {
+  width: 1.5rem;
+  background: var(--color-accent);
+}

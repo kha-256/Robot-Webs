@@ -1,0 +1,49 @@
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translate3d(var(--parallax-x, 0), calc(var(--parallax-y, 0) + 0px), 0);
+  }
+  50% {
+    transform: translate3d(var(--parallax-x, 0), calc(var(--parallax-y, 0) - 10px), 0);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
+.hero-robot-float {
+  animation: float-y 6s var(--ease-out) infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-robot-float {
+    animation: none;
+  }
+}
+
+.partners-track {
+  animation: marquee 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partners-track {
+    animation: none;
+  }
+}

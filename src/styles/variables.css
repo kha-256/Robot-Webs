@@ -1,0 +1,60 @@
+:root {
+  /* Surfaces */
+  --color-bg-deep: #050608;
+  --color-bg: #0a0c10;
+  --color-bg-elevated: #11141c;
+  --color-bg-glass: rgba(14, 18, 28, 0.72);
+
+  /* Accents */
+  --color-accent: #22d3ee;
+  --color-accent-soft: rgba(34, 211, 238, 0.14);
+  --color-accent-blue: #38bdf8;
+  --color-violet: #8b5cf6;
+  --color-violet-soft: rgba(139, 92, 246, 0.12);
+
+  /* Text */
+  --color-text: #e8edf5;
+  --color-text-muted: #94a3b8;
+  --color-text-dim: #64748b;
+
+  /* Borders & effects */
+  --color-border: rgba(148, 163, 184, 0.14);
+  --color-border-accent: rgba(34, 211, 238, 0.35);
+  --shadow-glow: 0 0 48px rgba(34, 211, 238, 0.08);
+  --shadow-card: 0 24px 48px rgba(0, 0, 0, 0.45);
+
+  /* Typography */
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  --text-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.8125rem);
+  --text-sm: clamp(0.875rem, 0.84rem + 0.2vw, 0.9375rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
+  --text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem);
+  --text-xl: clamp(1.35rem, 1.2rem + 0.6vw, 1.75rem);
+  --text-2xl: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
+  --text-hero: clamp(2.25rem, 1.6rem + 2.8vw, 4.25rem);
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: clamp(3rem, 2rem + 4vw, 6rem);
+  --section-pad: clamp(4rem, 3rem + 4vw, 7rem);
+
+  /* Layout */
+  --max-width: 1200px;
+  --nav-height: 4.25rem;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Motion */
+  --duration-fast: 180ms;
+  --duration-normal: 320ms;
+  --duration-slow: 600ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
