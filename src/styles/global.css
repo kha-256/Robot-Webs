@@ -163,8 +163,30 @@ p:last-child {
   pointer-events: none;
 }
 
+.grid-overlay--live {
+  animation: page-grid-reveal 1.4s var(--ease-out) both;
+}
+
+.page-bg--live {
+  animation: page-bg-settle 1.6s var(--ease-out) both;
+}
+
+@keyframes page-bg-settle {
+  from {
+    filter: brightness(0.55) saturate(0.85);
+  }
+  to {
+    filter: brightness(1) saturate(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .grid-overlay {
     opacity: 0.2;
+  }
+
+  .grid-overlay--live,
+  .page-bg--live {
+    animation: none;
   }
 }

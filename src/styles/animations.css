@@ -8,6 +8,68 @@
   }
 }
 
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+}
+
+@keyframes hero-gradient-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, -1.5%, 0) scale(1.04);
+  }
+}
+
+@keyframes hero-grid-breathe {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes hero-ring-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hero-hud-scan {
+  0%,
+  100% {
+    transform: translateY(-42%) scaleX(0.85);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateY(42%) scaleX(1);
+    opacity: 0.85;
+  }
+}
+
+@keyframes page-grid-reveal {
+  from {
+    opacity: 0.05;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0);
@@ -39,7 +101,7 @@
 }
 
 .partners-track {
-  animation: marquee 28s linear infinite;
+  animation: marquee 55s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

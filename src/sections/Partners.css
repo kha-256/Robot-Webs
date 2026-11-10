@@ -8,7 +8,8 @@
 }
 
 .partners__marquee {
-  mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
 }
 
 .partners-track {
@@ -17,6 +18,7 @@
   gap: var(--space-3xl);
   width: max-content;
   padding-block: var(--space-lg);
+  will-change: transform;
 }
 
 .partners-track li {
@@ -24,12 +26,12 @@
 }
 
 .partners-track img {
-  height: 4.5rem;
+  height: 7rem;
   width: auto;
-  max-width: 10rem;
+  max-width: 16rem;
   object-fit: contain;
-  opacity: 0.85;
-  filter: grayscale(0.2);
+  opacity: 0.9;
+  filter: grayscale(0.15);
   transition: opacity var(--duration-normal);
 }
 
@@ -41,13 +43,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--space-2xl);
+  gap: var(--space-xl);
 }
 
 .partners__static img {
-  height: 4.5rem;
+  height: 7rem;
   width: auto;
-  max-width: 10rem;
+  max-width: 16rem;
   object-fit: contain;
 }
 

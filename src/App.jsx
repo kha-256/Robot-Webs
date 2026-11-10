@@ -1,3 +1,4 @@
+import { CinematicBoot } from './components/hero/CinematicBoot';
 import { Navbar } from './components/navigation/Navbar';
 import { About } from './sections/About';
 import { Contact } from './sections/Contact';
@@ -13,8 +14,9 @@ export default function App() {
       <a href="#home" className="skip-link">
         Skip to content
       </a>
-      <div className="page-bg" aria-hidden="true" />
-      <div className="grid-overlay" aria-hidden="true" />
+      <CinematicBoot />
+      <div className="page-bg page-bg--live" aria-hidden="true" />
+      <div className="grid-overlay grid-overlay--live" aria-hidden="true" />
       <Navbar />
       <main>
         <Hero />

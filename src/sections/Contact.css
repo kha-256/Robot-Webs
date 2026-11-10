@@ -21,7 +21,9 @@
 
 .contact__card {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: var(--space-md);
   padding: var(--space-xl);
   border: 1px solid var(--color-border);
@@ -29,6 +31,7 @@
   background: var(--color-bg-elevated);
   color: var(--color-text-muted);
   font-size: var(--text-base);
+  text-align: center;
   transition:
     border-color var(--duration-normal),
     color var(--duration-normal);

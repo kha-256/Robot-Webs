@@ -4,21 +4,67 @@
   min-height: min(100vh, 900px);
   display: flex;
   align-items: center;
+  overflow: hidden;
+}
+
+.hero__ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero__gradient-drift {
+  position: absolute;
+  inset: -20% -10%;
+  background:
+    radial-gradient(ellipse 50% 40% at 20% 30%, rgba(34, 211, 238, 0.1), transparent 55%),
+    radial-gradient(ellipse 45% 35% at 85% 55%, rgba(139, 92, 246, 0.08), transparent 50%);
+  animation: hero-gradient-drift 18s ease-in-out infinite;
+}
+
+.hero__tech-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.45;
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 85% 65% at 65% 42%, black 15%, transparent 70%);
+  animation: hero-grid-breathe 10s ease-in-out infinite;
 }
 
 .hero__glow {
   position: absolute;
-  top: 10%;
-  right: -10%;
-  width: min(55vw, 520px);
-  height: min(55vw, 520px);
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.15), transparent 65%);
   pointer-events: none;
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+.hero__glow--primary {
+  top: 8%;
+  right: -8%;
+  width: min(58vw, 540px);
+  height: min(58vw, 540px);
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.18), transparent 65%);
   animation: pulse-glow 8s ease-in-out infinite;
 }
 
+.hero__glow--violet {
+  bottom: 5%;
+  left: -15%;
+  width: min(45vw, 420px);
+  height: min(45vw, 420px);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent 68%);
+  animation: pulse-glow 11s ease-in-out infinite reverse;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .hero__glow {
+  .hero__glow--primary,
+  .hero__glow--violet,
+  .hero__gradient-drift,
+  .hero__tech-grid {
     animation: none;
   }
 }
@@ -27,6 +73,8 @@
   display: grid;
   gap: var(--space-3xl);
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 @media (min-width: 960px) {
@@ -52,8 +100,18 @@
   max-width: 14ch;
 }
 
-.hero__headline-word {
+.hero__headline--3d {
+  perspective: 900px;
+}
+
+.hero__headline-char {
   display: inline-block;
+  transform-origin: 50% 100%;
+  will-change: transform, opacity, filter;
+}
+
+.hero__headline-space {
+  display: inline;
 }
 
 .hero__description {
@@ -64,6 +122,13 @@
 
 .hero__actions {
   margin-top: var(--space-md);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.hero__cta-wrap {
+  display: inline-flex;
 }
 
 .hero__visual {
@@ -71,39 +136,207 @@
   justify-content: center;
 }
 
+.hero__visual-stage {
+  perspective: 1400px;
+  width: min(100%, 440px);
+}
+
 .hero__visual-frame {
   position: relative;
-  width: min(100%, 420px);
+  width: 100%;
+  --px: 0;
+  --py: 0;
   --parallax-x: 0px;
   --parallax-y: 0px;
+  transform: rotateY(calc(var(--px) * 7deg)) rotateX(calc(var(--py) * -5deg));
+  transform-style: preserve-3d;
+  transition: transform 0.35s var(--ease-out);
 }
 
-.hero__visual-ring {
+@media (max-width: 959px) {
+  .hero__visual-frame {
+    transform: none;
+    transition: none;
+  }
+}
+
+.hero__parallax-soft {
+  transform: translate3d(
+    calc(var(--px) * 10px),
+    calc(var(--py) * 10px),
+    -20px
+  );
+}
+
+.hero__parallax-strong {
+  transform: translate3d(
+    calc(var(--px) * 22px),
+    calc(var(--py) * 22px),
+    24px
+  );
+}
+
+@media (max-width: 959px) {
+  .hero__parallax-soft,
+  .hero__parallax-strong {
+    transform: none;
+  }
+}
+
+.hero__hud {
   position: absolute;
-  inset: 8%;
-  border: 1px solid var(--color-border-accent);
-  border-radius: 50%;
-  opacity: 0.6;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.hero__visual-ring::before {
+.hero__hud-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(34, 211, 238, 0.22);
+}
+
+.hero__hud-ring--outer {
+  inset: -2%;
+  opacity: 0.35;
+  animation: hero-ring-spin 48s linear infinite;
+}
+
+.hero__hud-ring--mid {
+  inset: 10%;
+  border-style: dashed;
+  opacity: 0.5;
+  animation: hero-ring-spin 32s linear infinite reverse;
+}
+
+.hero__hud-ring--inner {
+  inset: 22%;
+  border-color: rgba(139, 92, 246, 0.28);
+  animation: hero-ring-spin 22s linear infinite;
+}
+
+.hero__hud-ring--outer::before {
   content: '';
   position: absolute;
   inset: -1px;
   border-radius: inherit;
   background: conic-gradient(
-    from 180deg,
+    from 0deg,
     transparent,
-    rgba(34, 211, 238, 0.35),
-    transparent 40%
+    rgba(34, 211, 238, 0.45),
+    transparent 25%
   );
   mask: radial-gradient(farthest-side, transparent calc(100% - 2px), black calc(100% - 1px));
-  opacity: 0.5;
+  opacity: 0.55;
+}
+
+.hero__hud-scan {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(34, 211, 238, 0.85),
+    transparent
+  );
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.35);
+  animation: hero-hud-scan 4.5s ease-in-out infinite;
+  opacity: 0.65;
+}
+
+.hero__hud-tick {
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  background: rgba(34, 211, 238, 0.55);
+  left: 50%;
+  margin-left: -5px;
+}
+
+.hero__hud-tick--n {
+  top: 6%;
+}
+
+.hero__hud-tick--s {
+  bottom: 6%;
+}
+
+.hero__hud-tick--e {
+  top: 50%;
+  right: 6%;
+  left: auto;
+  margin: -1px 0 0;
+  width: 2px;
+  height: 10px;
+}
+
+.hero__hud-tick--w {
+  top: 50%;
+  left: 6%;
+  margin: -1px 0 0;
+  width: 2px;
+  height: 10px;
+}
+
+.hero__robot-shell {
+  position: relative;
+  z-index: 1;
+  will-change: clip-path, transform;
+}
+
+.hero__robot-float {
+  animation: hero-float 6.5s var(--ease-out) infinite;
+  will-change: transform;
 }
 
 .hero__robot {
   position: relative;
   z-index: 1;
   width: 100%;
-  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 28px 56px rgba(0, 0, 0, 0.55))
+    drop-shadow(0 0 40px rgba(34, 211, 238, 0.08));
+}
+
+.hero__light-sweep {
+  position: absolute;
+  inset: 5% 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.12) 48%,
+    rgba(34, 211, 238, 0.25) 50%,
+    rgba(255, 255, 255, 0.08) 52%,
+    transparent 65%
+  );
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+
+.hero__visual-floor {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  width: 72%;
+  height: 14%;
+  margin-left: -36%;
+  background: radial-gradient(ellipse, rgba(34, 211, 238, 0.2), transparent 70%);
+  filter: blur(8px);
+  z-index: 0;
+  opacity: 0.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__hud-ring--outer,
+  .hero__hud-ring--mid,
+  .hero__hud-ring--inner,
+  .hero__hud-scan,
+  .hero__robot-float {
+    animation: none;
+  }
 }

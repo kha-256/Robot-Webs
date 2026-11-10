@@ -26,12 +26,21 @@ export function Navbar() {
       className={`nav-bar ${scrolled ? 'nav-bar--scrolled' : ''}`}
       initial={reduced ? false : { y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      transition={{
+        duration: 0.75,
+        delay: reduced ? 0 : 0.35,
+        ease: [0.16, 1, 0.3, 1],
+      }}
     >
       <div className="nav-bar__inner container">
         <a href="#home" className="nav-bar__brand" onClick={handleNavClick}>
-          <img src="/images/logo.png" alt="" width={40} height={40} aria-hidden="true" />
-          <span className="nav-bar__title">Robot</span>
+          <img
+            className="nav-bar__logo"
+            src="/images/logo.png"
+            alt="Roboyaar"
+            width={148}
+            height={40}
+          />
         </a>
 
         <nav className="nav-bar__desktop" aria-label="Primary">

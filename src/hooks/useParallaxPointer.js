@@ -16,6 +16,8 @@ export function useParallaxPointer(intensity = 12) {
       if (frame.current) cancelAnimationFrame(frame.current);
       frame.current = requestAnimationFrame(() => {
         if (!ref.current) return;
+        ref.current.style.setProperty('--px', String(x));
+        ref.current.style.setProperty('--py', String(y));
         ref.current.style.setProperty('--parallax-x', `${x * intensity}px`);
         ref.current.style.setProperty('--parallax-y', `${y * intensity}px`);
       });
@@ -25,6 +27,8 @@ export function useParallaxPointer(intensity = 12) {
 
   const onLeave = useCallback(() => {
     if (!ref.current) return;
+    ref.current.style.setProperty('--px', '0');
+    ref.current.style.setProperty('--py', '0');
     ref.current.style.setProperty('--parallax-x', '0px');
     ref.current.style.setProperty('--parallax-y', '0px');
   }, []);

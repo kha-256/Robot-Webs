@@ -6,7 +6,9 @@ import './Partners.css';
 
 export function Partners() {
   const reduced = useReducedMotion();
-  const track = [...partnerLogos, ...partnerLogos];
+  // Repeat enough logos to fill wide viewports, then duplicate for a seamless -50% loop
+  const sequence = Array.from({ length: 4 }, () => partnerLogos).flat();
+  const track = [...sequence, ...sequence];
 
   return (
     <section id={partnersSection.id} className="partners section">
@@ -22,7 +24,7 @@ export function Partners() {
           <ul className="partners__static container">
             {partnerLogos.map((logo) => (
               <li key={logo.id}>
-                <img src={logo.src} alt={logo.alt} loading="lazy" width={160} height={80} />
+                <img src={logo.src} alt={logo.alt} loading="lazy" width={280} height={140} />
               </li>
             ))}
           </ul>
@@ -31,7 +33,7 @@ export function Partners() {
             <ul className="partners-track">
               {track.map((logo, index) => (
                 <li key={`${logo.id}-${index}`}>
-                  <img src={logo.src} alt="" loading="lazy" width={160} height={80} />
+                  <img src={logo.src} alt="" loading="lazy" width={280} height={140} />
                 </li>
               ))}
             </ul>

@@ -19,10 +19,15 @@ export function Footer() {
         animate={inView ? preset.animate : preset.initial}
         transition={preset.transition}
       >
-        <div className="site-footer__brand">
-          <img src="/images/logo.png" alt="" width={36} height={36} aria-hidden="true" />
-          <span>Robot</span>
-        </div>
+        {/* <div className="site-footer__brand">
+          <img
+            className="site-footer__logo"
+            src="/images/logo.png"
+            alt="Roboyaar"
+            width={132}
+            height={36}
+          />
+        </div> */}
 
         <nav aria-label="Footer">
           <ul className="site-footer__links">
@@ -34,7 +39,7 @@ export function Footer() {
           </ul>
         </nav>
 
-        <ul className="site-footer__social">
+        {/* <ul className="site-footer__social">
           {socialLinks.map((item) => (
             <li key={item.id}>
               <a href={item.href} aria-label={item.label}>
@@ -42,7 +47,7 @@ export function Footer() {
               </a>
             </li>
           ))}
-        </ul>
+        </ul> */}
       </motion.div>
 
       <div className="site-footer__copy">

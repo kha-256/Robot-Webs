@@ -31,6 +31,15 @@
   gap: var(--space-sm);
 }
 
+.nav-bar__logo {
+  width: auto;
+  height: 3rem;
+  object-fit: contain;
+  /* Dark-mode logo: knock out black plate and lift grey marks to white */
+  mix-blend-mode: screen;
+  filter: brightness(1.55) contrast(1.2);
+}
+
 .nav-bar__title {
   font-family: var(--font-display);
   font-weight: 700;
